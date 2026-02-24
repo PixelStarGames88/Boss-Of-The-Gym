@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Создать аккаунт</h2>
+
+        <form id="registerForm" asp-action="Register" method="post">
+            @* Anti-forgery token для ASP.NET *@
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label for="username">Имя пользователя *</label>
+                <input type="text" id="username" name="Username" required
+                       minlength="3" maxlength="50" pattern="^[a-zA-Z0-9_]+$"
+                       placeholder="Введите логин" autocomplete="username">
+                <span class="error-message" id="usernameError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="Email" required
+                       maxlength="100" placeholder="example@mail.com" autocomplete="email">
+                <span class="error-message" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль *</label>
+                <input type="password" id="password" name="Password" required
+                       minlength="8" maxlength="100"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"
+                       placeholder="Мин. 8 символов, заглавные, строчные, цифры" autocomplete="new-password">
+                <span class="error-message" id="passwordError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Подтвердите пароль *</label>
+                <input type="password" id="confirmPassword" name="ConfirmPassword" required
+                       placeholder="Повторите пароль" autocomplete="new-password">
+                <span class="error-message" id="confirmPasswordError"></span>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" id="agree" name="AgreeToTerms" required>
+                <label for="agree">Я согласен с <a href="/Privacy" target="_blank">условиями использования</a> *</label>
+            </div>
+
+            <button type="submit" class="btn-submit">Зарегистрироваться</button>
+
+            <div class="auth-links">
+                <p>Уже есть аккаунт? <a href="/Account/Login">Войти</a></p>
+            </div>
+        </form>
+    </div>
+</div>
