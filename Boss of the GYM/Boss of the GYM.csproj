@@ -7,4 +7,15 @@
     <RootNamespace>Boss_of_the_GYM</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="js\**" />
+    <Compile Remove="Styles\**" />
+    <Content Remove="js\**" />
+    <Content Remove="Styles\**" />
+    <EmbeddedResource Remove="js\**" />
+    <EmbeddedResource Remove="Styles\**" />
+    <None Remove="js\**" />
+    <None Remove="Styles\**" />
+  </ItemGroup>
+
 </Project>
